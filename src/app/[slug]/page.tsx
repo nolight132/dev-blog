@@ -8,7 +8,7 @@ export async function generateStaticParams() {
 	}));
 }
 
-export default async function Post({ params }: { params: { slug: string } }) {
+const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
 	const { slug } = await params;
 	const { meta, content } = getPostBySlug(slug);
 
@@ -18,4 +18,6 @@ export default async function Post({ params }: { params: { slug: string } }) {
 			<MDXRemote source={content} />
 		</article>
 	);
-}
+};
+
+export default Post;
