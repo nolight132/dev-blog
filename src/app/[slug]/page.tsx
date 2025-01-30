@@ -3,6 +3,7 @@ import { getPostBySlug, getPostSlugs, mdToPlainText } from "../../lib/mdx";
 import type { Metadata } from "next";
 import rehypeHighlight from "rehype-highlight";
 import "@/app/styles/highlight-js/rose-pine.css";
+import CodeBlock from "../components/CodeBlock";
 
 export async function generateStaticParams() {
 	const posts = getPostSlugs();
@@ -37,9 +38,15 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
 	const { meta, content } = getPostBySlug(slug);
 
 	return (
-		<article className="prose dark:prose-invert md:prose-lg lg:prose-xl w-full py-16">
-			<p className="text-gray-400">{meta.date}</p>
-			<MDXRemote source={content} options={options} />
+		<article className="prose dark:prose-invert md:prose-lg lg:prose-xl w-full">
+			<p className="text-muted-foreground">{meta.date}</p>
+			<MDXRemote
+				source={content}
+				options={options}
+				components={{
+					pre: CodeBlock,
+				}}
+			/>
 		</article>
 	);
 };

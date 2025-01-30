@@ -10,19 +10,17 @@ export default function Home() {
 			<h2 className="font-bold text-4xl mb-6">Latest Posts</h2>
 			<ul className="space-y-4">
 				{posts.map((post) => {
-					// Convert MDX content to plain text
 					const plainText = mdToPlainText(post.content);
-
 					return (
 						<li key={post.slug} className="pb-4">
-							<Link href={`/${post.slug}`}>
-								<h2 className="text-xl font-semibold hover:text-blue-300">
+							<Link className="group" href={`/${post.slug}`}>
+								<h2 className="text-2xl py-2 font-semibold group-hover:text-accent-foreground transition">
 									{post.meta.title}
 								</h2>
-								<p>{plainText.slice(0, 100)}...</p>
+								<p className="truncate">{plainText}</p>
 								<div className="flex items-center space-x-2">
 									<CalendarIcon className="size-4" />
-									<p className="text-gray-500">{post.meta.date}</p>
+									<p className="text-muted-foreground">{post.meta.date}</p>
 								</div>
 							</Link>
 						</li>
