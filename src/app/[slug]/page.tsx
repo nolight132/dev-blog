@@ -12,9 +12,10 @@ export async function generateStaticParams() {
 export async function generateMetadata({
 	params,
 }: {
-	params: { slug: string };
+	params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-	const { meta, content } = getPostBySlug(params.slug);
+	const { slug } = await params;
+	const { meta, content } = getPostBySlug(slug);
 
 	return {
 		title: `${meta.title} - nolight's Zone` || "Article",
