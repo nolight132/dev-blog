@@ -13,7 +13,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	const websiteSourceURL = "https://github.com/nolight132/dev-blog";
 	return (
-		<html lang="en">
+		<html lang="en" className="antialiased">
 			<body>
 				<div className="flex flex-col items-center p-6">
 					<div className="flex flex-col min-h-screen w-full lg:w-1/2 items-center">

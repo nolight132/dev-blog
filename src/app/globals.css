@@ -14,7 +14,7 @@
 		--background: #0a0a0a;
 		--foreground: #ededed;
 		--muted: #1a1a1a;
-		--muted-foreground: #a1a1aa;
+		--muted-foreground: #5a5b5e;
 		--accent: #c4a7e7;
 		--accent-foreground: #c4a7e7;
 	}
@@ -31,7 +31,7 @@ body {
 		@apply flex items-center space-x-1;
 	}
 	.anchor {
-		@apply absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 transition-opacity;
+		@apply absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 opacity-0 transition-opacity;
 	}
 
 	.anchor svg {
@@ -62,6 +62,6 @@ body {
 	}
 
 	h1 .anchor {
-		@apply -left-8;
+		@apply -left-5 md:-left-8;
 	}
 }
