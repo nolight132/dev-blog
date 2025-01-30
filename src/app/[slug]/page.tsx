@@ -1,6 +1,8 @@
 import { MDXRemote } from "next-mdx-remote/rsc";
 import { getPostBySlug, getPostSlugs, mdToPlainText } from "../../lib/mdx";
 import type { Metadata } from "next";
+import rehypeHighlight from "rehype-highlight";
+import "@/app/styles/highlight-js/rose-pine.css";
 
 export async function generateStaticParams() {
 	const posts = getPostSlugs();
@@ -8,6 +10,13 @@ export async function generateStaticParams() {
 		slug: post.replace(/\.mdx$/, ""),
 	}));
 }
+
+const options = {
+	mdxOptions: {
+		remarkPlugins: [],
+		rehypePlugins: [rehypeHighlight],
+	},
+};
 
 export async function generateMetadata({
 	params,
@@ -30,7 +39,7 @@ const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
 	return (
 		<article className="prose dark:prose-invert md:prose-lg lg:prose-xl w-full py-16">
 			<p className="text-gray-400">{meta.date}</p>
-			<MDXRemote source={content} />
+			<MDXRemote source={content} options={options} />
 		</article>
 	);
 };
