@@ -19,7 +19,7 @@ export async function generateMetadata({
 
 	return {
 		title: `${meta.title} - nolight's Zone` || "Article",
-		description: mdToPlainText(content) || "nolight's article",
+		description: mdToPlainText(content).slice(0, 50) || "nolight's article",
 	};
 }
 
