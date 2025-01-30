@@ -15,8 +15,8 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body>
-				<div className="flex flex-col items-center">
-					<div className="flex flex-col w-1/2 justify-center items-center">
+				<div className="flex flex-col items-center p-8">
+					<div className="flex flex-col lg:w-1/2 justify-center items-center">
 						<nav className="flex items-center w-full h-16">
 							<Link className="link" href="/">
 								nolight
