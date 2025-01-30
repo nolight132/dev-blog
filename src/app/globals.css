@@ -30,4 +30,38 @@ body {
 	.nav-link {
 		@apply flex items-center space-x-1;
 	}
+	.anchor {
+		@apply absolute -left-6 top-1/2 -translate-y-1/2 opacity-0 transition-opacity;
+	}
+
+	.anchor svg {
+		@apply h-4 w-4 text-muted-foreground hover:text-foreground dark:text-gray-500 dark:hover:text-gray-300;
+	}
+
+	h1:hover .anchor,
+	h2:hover .anchor,
+	h3:hover .anchor,
+	h4:hover .anchor,
+	h5:hover .anchor,
+	h6:hover .anchor,
+	.anchor:focus {
+		@apply opacity-100;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		@apply relative;
+	}
+
+	.anchor::before {
+		@apply content-['#'] text-muted-foreground hover:text-foreground transition;
+	}
+
+	h1 .anchor {
+		@apply -left-8;
+	}
 }

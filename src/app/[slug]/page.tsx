@@ -4,6 +4,9 @@ import type { Metadata } from "next";
 import rehypeHighlight from "rehype-highlight";
 import "@/app/styles/highlight-js/rose-pine.css";
 import CodeBlock from "../components/CodeBlock";
+import rehypeAutolinkHeadings from "rehype-autolink-headings";
+import rehypeSlug from "rehype-slug";
+import type { Pluggable } from "unified";
 
 export async function generateStaticParams() {
 	const posts = getPostSlugs();
@@ -14,8 +17,20 @@ export async function generateStaticParams() {
 
 const options = {
 	mdxOptions: {
-		remarkPlugins: [],
-		rehypePlugins: [rehypeHighlight],
+		rehypePlugins: [
+			rehypeHighlight as Pluggable,
+			rehypeSlug as Pluggable,
+			[
+				rehypeAutolinkHeadings,
+				{
+					content: {
+						type: "element",
+						tagName: "span",
+						properties: { className: "anchor" },
+					},
+				},
+			] as Pluggable,
+		],
 	},
 };
 
