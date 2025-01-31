@@ -1,0 +1,51 @@
+---
+title: "Blog Update: MDX pasring ✨"
+date: "2025-01-31 01:21"
+description: "I've implemented MDX parsing in my blog!"
+tags: ["blog", "web", "next.js"]
+---
+
+# Blog Update: MDX parsing ✨
+I wasn't really planning to write about the blog itself, but I need to test the MDX parsing, so here we are.
+
+## The idea
+When I first thought about starting this blog, I knew I wanted all the posts to be written in Markdown.
+The idea was to keep the process of writing and publishing as simple as possible, which for me meant
+it had to happen in a local text editor. I also wanted the pages automatically generating upon creation
+of an `.md` file. So here I am now writing this post in [Zed](https://zed.dev/). 😁
+
+## Next.js and MDX
+I have been using Next.js for a while now in my [Movie Browser](https://github.com/nolight132/movie-browser)
+project, and I liked its directory-based routing system. That's exactly what I wanted in my blog, so I decided to
+use Next.js for this project as well. That's how I ended up with `next-mdx-remote`, a package that allows
+me to render MDX files as React components. It turns out it has a lot of useful plugins, like `remark-slug`
+and `remark-autolink-headings`, which I'm using to generate the anchor links next to the headings.
+I also added a custom component for the code blocks with [Rosé Pine](https://rosepinetheme.com) theme,
+which I think looks pretty good.
+
+That's how easy it is to render an MDX file in Next.js:
+```tsx
+const Post = async ({
+	params,
+}: {
+	params: Promise<{ slug: string }>;
+}) => {
+	const { slug } = await params;
+	const { meta, content } = getPostBySlug(slug);
+
+	return (
+		<article className="prose dark:prose-invert md:prose-lg lg:prose-xl w-full">
+			<p className="text-muted-foreground">{meta.date}</p>
+			<MDXRemote
+				source={content}
+				options={options}
+				components={{
+					pre: CodeBlock,
+				}}
+			/>
+		</article>
+	);
+};
+```
+## Roadmap
+Now that I can write posts in Markdown, I'm planning to add a tag system and a search functionality, but that's for another post. 😄

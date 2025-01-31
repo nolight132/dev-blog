@@ -65,10 +65,7 @@ const CodeBlock = ({
 					)}
 				</button>
 			</div>
-			<pre className={`hljs ${className || ""}`}>
-				{/* Render the children (code element) directly */}
-				{children}
-			</pre>
+			<pre className={`hljs ${className || ""}`}>{children}</pre>
 		</div>
 	);
 };
