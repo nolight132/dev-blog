@@ -55,7 +55,7 @@ const CodeBlock = ({
 				<button
 					type="button"
 					onClick={handleCopy}
-					className="p-2 rounded hover:bg-zinc-800 transition"
+					className="p-2 rounded bg-zinc-800 hover:bg-zinc-700 transition"
 					aria-label="Copy code"
 				>
 					{copied ? (

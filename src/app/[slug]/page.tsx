@@ -23,6 +23,7 @@ const options = {
 			[
 				rehypeAutolinkHeadings,
 				{
+					behavior: "append",
 					content: {
 						type: "element",
 						tagName: "span",

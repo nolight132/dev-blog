@@ -24,7 +24,7 @@ export default function RootLayout({
 									<p>nolight Zone</p>
 								</Link>
 							</div>
-							<div className="h-full flex items-center">
+							<div className="h-full flex items-center text-muted-foreground hover:text-foreground transition">
 								<Link className="nav-link" href={websiteSourceURL}>
 									<CodeBracketIcon className="size-6" />
 									<p>Source</p>

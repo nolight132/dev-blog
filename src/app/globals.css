@@ -31,11 +31,7 @@ body {
 		@apply flex items-center space-x-1;
 	}
 	.anchor {
-		@apply absolute -left-4 md:-left-6 top-1/2 -translate-y-1/2 opacity-0 transition-opacity;
-	}
-
-	.anchor svg {
-		@apply h-4 w-4 text-muted-foreground hover:text-foreground dark:text-gray-500 dark:hover:text-gray-300;
+		@apply absolute ml-2 bottom-0 opacity-0 font-bold transition-opacity;
 	}
 
 	h1:hover .anchor,
@@ -58,10 +54,10 @@ body {
 	}
 
 	.anchor::before {
-		@apply content-['#'] text-muted-foreground hover:text-foreground transition;
+		@apply content-['#'] text-accent hover:text-foreground transition;
 	}
 
 	h1 .anchor {
-		@apply -left-5 md:-left-8;
+		@apply ml-2;
 	}
 }

@@ -8,7 +8,7 @@ export default function Home() {
 	return (
 		<div className="w-full">
 			<h2 className="font-bold text-4xl md:text-5xl">Latest Posts</h2>
-			<div className="w-1/2 h-[2px] bg-zinc-800 mt-4 mb-6" />
+			<div className="w-1/2 h-[2px] bg-muted mt-4 mb-6" />
 			<ul className="space-y-4">
 				{posts.map((post) => {
 					const plainText = mdToPlainText(post.content);
