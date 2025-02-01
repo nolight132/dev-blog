@@ -22,6 +22,16 @@ export default function Home() {
 								<div className="flex items-center space-x-2">
 									<CalendarIcon className="size-4" />
 									<p className="text-muted-foreground">{post.meta.date}</p>
+									<div className="space-x-2">
+										{post.meta.tags?.map((tag: string) => (
+											<span
+												key={tag}
+												className="text-foreground bg-muted px-2 py-1 rounded-md"
+											>
+												{tag}
+											</span>
+										))}
+									</div>
 								</div>
 							</Link>
 						</li>

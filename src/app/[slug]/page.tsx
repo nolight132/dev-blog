@@ -59,7 +59,17 @@ const Post = async ({
 
 	return (
 		<article className="prose dark:prose-invert md:prose-lg lg:prose-xl w-full">
-			<p className="text-muted-foreground">{meta.date}</p>
+			<div className="space-x-2">
+				{meta.tags?.map((tag: string) => (
+					<span
+						key={tag}
+						className="text-foreground bg-muted px-2 py-1 rounded-md"
+					>
+						{tag}
+					</span>
+				))}
+			</div>
+			<p className="text-muted-foreground font-mono">{meta.date}</p>
 			<MDXRemote
 				source={content}
 				options={options}
