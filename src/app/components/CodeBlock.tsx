@@ -1,7 +1,7 @@
 "use client";
 
+import { CheckIcon, ClipboardIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
-import { ClipboardIcon, CheckIcon } from "@heroicons/react/24/outline";
 import React, {
 	type ReactNode,
 	isValidElement,

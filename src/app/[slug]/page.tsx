@@ -1,12 +1,13 @@
-import { MDXRemote } from "next-mdx-remote/rsc";
-import { getPostBySlug, getPostSlugs, mdToPlainText } from "../../lib/mdx";
 import type { Metadata } from "next";
+import { MDXRemote } from "next-mdx-remote/rsc";
 import rehypeHighlight from "rehype-highlight";
+import remarkGfm from "remark-gfm";
+import { getPostBySlug, getPostSlugs, mdToPlainText } from "../../lib/mdx";
 import "@/app/styles/highlight-js/rose-pine.css";
-import CodeBlock from "../components/CodeBlock";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeSlug from "rehype-slug";
 import type { Pluggable } from "unified";
+import CodeBlock from "../components/CodeBlock";
 
 export async function generateStaticParams() {
 	const posts = getPostSlugs();
@@ -17,6 +18,8 @@ export async function generateStaticParams() {
 
 const options = {
 	mdxOptions: {
+		format: "mdx" as const,
+		remarkPlugins: [remarkGfm],
 		rehypePlugins: [
 			rehypeHighlight as Pluggable,
 			rehypeSlug as Pluggable,
@@ -44,16 +47,12 @@ export async function generateMetadata({
 	const { meta, content } = getPostBySlug(slug);
 
 	return {
-		title: `${meta.title} - nolight's Zone` || "Article",
+		title: `${meta.title} - nolight's zone` || "Article",
 		description: mdToPlainText(content).slice(0, 50) || "nolight's article",
 	};
 }
 
-const Post = async ({
-	params,
-}: {
-	params: Promise<{ slug: string }>;
-}) => {
+const Post = async ({ params }: { params: Promise<{ slug: string }> }) => {
 	const { slug } = await params;
 	const { meta, content } = getPostBySlug(slug);
 
